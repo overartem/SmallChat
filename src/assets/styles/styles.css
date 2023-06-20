@@ -1,0 +1,19 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "./_variables.css";
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+  color: #000;
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(139deg, rgba(154, 147, 165, 1) 0%, rgba(253, 209, 58, 1) 35%, rgba(235, 209, 52, 1) 100%) no-repeat;
+}
