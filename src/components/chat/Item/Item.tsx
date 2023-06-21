@@ -1,10 +1,10 @@
 
-function Item({ comment, author, removeComment }: { comment: string; author: string, removeComment: () => void }) {
+function Item({ comment, author, removeComment }: { comment: string; author: string; removeComment: () => void }): JSX.Element {
   const authorInitials = author.substring(0, 2);
 
   return (
     <>
-      <li className='relative shadow-lg px-4 py-8 mb-10 lg:mb-5 bg-[var(--theme-yellow-color)]'>
+      <li className='relative shadow-lg px-4 py-8 mb-10 bg-[var(--theme-yellow-color)]'>
         <div className='author-block flex items-center absolute -top-7 left-0 lg:-left-8'>
           <p className='rounded-full font-medium bg-[var(--theme-bg-color)] overflow-hidden w-[54px] text-xl text-center p-3 text-white uppercase z-[2]'>
             {authorInitials}

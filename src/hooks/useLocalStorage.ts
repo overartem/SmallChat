@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 
-const useLocalStorage = (key: string, defaultValue: string): [string, (value: string) => void] => {
-  const [value, setValue] = useState(() => {
+interface ILocalStorage {
+  valueStorage: string;
+  setStorageValue: (value: string) => void;
+}
+
+const useLocalStorage = (key: string, defaultValue: string):ILocalStorage => {
+  const [valueStorage, setStorageValue] = useState(() => {
     let currentValue: string;
 
     try {
@@ -14,10 +19,10 @@ const useLocalStorage = (key: string, defaultValue: string): [string, (value: st
   });
 
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
-  }, [value, key]);
+    localStorage.setItem(key, JSON.stringify(valueStorage));
+  }, [valueStorage, key]);
 
-  return [value, setValue];
+  return { valueStorage, setStorageValue };
 };
 
 export default useLocalStorage;

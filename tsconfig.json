@@ -15,11 +15,12 @@
     "allowSyntheticDefaultImports": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "src",
+    "baseUrl": "src/",
     "paths": {
       "components/*": ["components/*"],
       "hooks/*": ["hooks/*"],
       "assets/*": ["assets/*"],
+      "data/*": ["data/*"],
       "utils/*": ["utils/*"],
       "constants/*": ["constants/*"]
     },

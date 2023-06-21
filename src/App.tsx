@@ -1,21 +1,25 @@
-import { useState } from "react";
+import { useState, createContext, useRef } from "react";
 import Form from "components/chat/Form/Form";
 import List from "components/chat/List/List";
+import useLocalStorage from "hooks/useLocalStorage";
+import { IContextType } from "types/Chat";
 
-function App() {
-  const [message, setMessage] = useState<string>('');
+import { KEY_LOCAL_STORAGE } from "constants/settings";
 
-  const getNewMsg = (msg: string | undefined) => {
-    if (msg) setMessage(msg);
-  };
+export const ChatContext = createContext<IContextType>({});
+function App(): JSX.Element {
+  const [isSend, setIsSend] = useState<boolean>(false);
+  const { valueStorage } = useLocalStorage(KEY_LOCAL_STORAGE, "");
+  const message = useRef(valueStorage);
   return (
-    <>
-      {console.log("rerender app")}
-      <div className='container px-5 lg:px-0 max-w-4xl mx-auto my-24'>
-        <List newMsg={message} />
-        <Form getMsg={(msg) => getNewMsg(msg)} />
-      </div>
-    </>
+    <ChatContext.Provider value={{ message, isSend, setIsSend }}>
+      <>
+        <div className='container px-5 lg:px-0 max-w-4xl mx-auto my-24'>
+          <List />
+          <Form />
+        </div>
+      </>
+    </ChatContext.Provider>
   );
 }
 
